@@ -1,0 +1,9 @@
+1. Power down B1F2 unit 3
+2. Unpatch Ethernet cables
+3. Unrack the switch
+4. Remove power supplies, fans and stacking modules from the old switch and install them in the new replacement switch
+5. Rack the new switch, connect stacking cables and power it up
+6. Connect Ethernet cables
+7. stack secure-setup (if new switch's unit # isn't 3)
+
+- repeat above steps for B2F2 unit 6 and B3F4 unit 10

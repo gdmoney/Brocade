@@ -1,0 +1,20 @@
+1. Install matching code version on the new stack member
+
+2. Connect new unit to the stack before powering it on
+
+3. Enter: stack enable on the new unit
+
+3. Enter: stack secure-setup to renumber the new unit (optional)
+
+5. Configure the new unit's ports
+
+============================
+
+stack enable				// individually on each switch
+
+stack secure-setup			// to configure the stack
+
+stack switch-over			// standby becomes active
+
+show stack
+

@@ -1,0 +1,25 @@
+
+username siteadmin password 8 $1$dcCTGdX9$XBCbLaCGf5nP0JjPr8zBv1
+
+aaa authentication login default tacacs+ enable
+aaa authentication enable default tacacs+ enable
+aaa authentication enable implicit-user
+
+aaa authorization commands 0 default none                         
+aaa authorization exec default tacacs+ none
+
+aaa accounting commands 0 default start-stop tacacs+
+aaa accounting exec default start-stop tacacs+
+aaa accounting system default start-stop tacacs+
+
+
+enable aaa console
+enable strict-password-enforcement
+enable super-user-password 8 $1$8sgRPDes$1Bl4ec1eSspkMYVuLanmQ/
+enable user password-masking
+
+
+tacacs-server host 10.158.34.53
+tacacs-server host 10.180.194.124
+tacacs-server key 2 $IT1sYk8hPWM=
+tacacs-server timeout 5

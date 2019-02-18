@@ -1,0 +1,34 @@
+Brocade
+-------
+
+vlan 721
+ tagged ethe 4/1/43
+!
+vlan 902
+ tagged ethe 4/1/43
+!
+interface ethernet 4/1/43
+ port-name Cisco AV switch in Cafe
+ loop-detection
+ broadcast limit 100000 kbps
+ multicast limit 100000 kbps
+ unknown-unicast limit 100000 kbps
+ trust dscp 
+ sflow forwarding
+ no snmp-server enable traps link-change
+
+=================================================
+
+Cisco
+-----
+
+interface FastEthernet0/24
+ description sdglacc-b020101i-0101 port 4/1/43
+ switchport trunk allowed vlan 721,902
+ switchport mode trunk
+!
+interface Vlan902
+ ip address 172.29.67.39 255.255.255.224
+ no ip route-cache
+!
+ip default-gateway 172.29.67.62

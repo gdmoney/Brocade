@@ -1,0 +1,43 @@
+
+monitor port		traffic source
+mirror  port		traffic destination
+
+=====
+
+mirror-port ethernet 1/1/46
+
+interface ethernet 1/1/47
+ mon ethe 1/1/46 both
+
+interface ethernet 1/1/48
+ mon ethe 1/1/46 both
+
+=====
+
+// didn't capture all traffic
+
+mirror-port ethernet 1/2/4
+
+access-list 140 permit ip host 172.18.20.104 any mirror
+access-list 140 permit ip any host 172.18.20.104 mirror
+access-list 140 permit ip any any
+
+interface ethernet 1/2/3
+ ip access-group 140 in
+ acl-mirror-port ethe 1/2/4 
+ 
+interface ethernet 1/2/1
+ ip access-group 140 in 
+ acl-mirror-port ethe 1/2/4
+
+=====
+
+// current config
+
+mirror-port ethernet 1/2/4
+
+interface ethernet 1/2/3
+ mon ethe 1/2/4 both
+
+=====
+

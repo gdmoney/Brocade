@@ -1,0 +1,31 @@
+Security Camera
+---------------
+stack enable				// individually on each switch
+
+stack unit 1 				// individually on each switch
+ default-ports 1/2/1 1/2/3		// individually on each switch | if using 10G ports vs 40G which are 1/3/1 and 1/4/1
+
+wr mem
+reload
+
+// connect cables
+
+stack secure-setup
+
+stack unit 1
+ priority 128
+
+stack unit 2
+ priority 128
+
+
+============================
+
+stack secure-setup
+
+stack suggested-id ...			// If bootup ID not available, use this
+
+stack switch-over			// standby becomes active
+
+show stack
+

@@ -1,0 +1,51 @@
+sdglacc-b030101m-0101
+---------------------
+
+int e 1/1/4 to 1/1/5
+ enable
+ no loop-detection
+ no broadcast limit 100000kbps
+ no stp-bpdu-guard  
+
+int e 2/1/4 to 2/1/5
+ enable
+ no loop-detection
+ no broadcast limit 100000kbps
+ no stp-bpdu-guard  
+
+int e 3/1/4 to 3/1/5
+ enable
+ no loop-detection
+ no broadcast limit 100000kbps
+ no stp-bpdu-guard  
+
+int e 4/1/4 to 4/1/5
+ enable
+ no loop-detection
+ no broadcast limit 100000kbps
+ no stp-bpdu-guard 
+
+
+
+lag WLCFlex-Primary static id 114                                       
+ ports ethernet 1/1/4 ethernet 2/1/4 ethernet 3/1/4 ethernet 4/1/4 
+ primary-port 1/1/4                                               
+ deploy                                                           
+
+                                                            
+lag WLCFlex-Secondary static id 115                                 
+ ports ethernet 1/1/5 ethernet 2/1/5 ethernet 3/1/5 ethernet 4/1/5 
+ primary-port 1/1/5                                              
+ deploy             
+
+
+
+vlan 600 to 604
+ tag e 1/1/4 to 1/1/5
+
+vlan 672
+ tag e 1/1/4 to 1/1/5           
+
+
+
+        

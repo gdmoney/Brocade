@@ -1,0 +1,495 @@
+﻿Distro 1
+--------
+
+lag Bldg4_Flr1 dynamic id 1			/// no changes to the LAGs
+ ports ethernet 1/1/9 to 1/1/10 
+ primary-port 1/1/9
+ deploy
+ sflow forwarding ethernet 1/1/9
+ port-name Bldg4_Flr1 ethernet 1/1/9
+ sflow forwarding ethernet 1/1/10
+!
+lag Bldg4_Flr4 dynamic id 4
+ ports ethernet 1/1/15 to 1/1/16 
+ primary-port 1/1/15
+ deploy
+ sflow forwarding ethernet 1/1/15
+ port-name Bldg4_Flr4 ethernet 1/1/15
+ sflow forwarding ethernet 1/1/16
+!
+!
+vlan 651 name Cisco-Users by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 651
+!
+vlan 652 name Cisco-Aps by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 652                                          
+!
+vlan 653 name Cisco-Mgmt by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 653
+!
+vlan 654 name Cisco-Spare1 by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 654
+!
+vlan 655 name Cisco-Spare2 by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 655
+!
+vlan 661 name Aruba_Users by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 661
+!
+vlan 662 name Aruba_APs by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 662
+!
+vlan 663 name Aruba_Mgmt by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2               
+ router-interface ve 663
+!
+vlan 664 name Aruba_Spare1 by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 664
+!
+vlan 665 name Aruba_Spare2 by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 665
+!
+!
+interface ve 651
+ ip address 172.28.164.251 255.255.255.0
+ ip helper-address 1 10.180.194.60
+ ip helper-address 2 10.158.34.50
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup
+  ip-address 172.28.164.254
+  short-path-forwarding
+  enable
+!
+interface ve 652
+ ip address 172.28.165.60 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup                                                
+  ip-address 172.28.165.62
+  short-path-forwarding
+  enable
+!
+interface ve 653
+ ip address 172.28.165.124 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup
+  ip-address 172.28.165.126
+  short-path-forwarding
+  enable
+!
+interface ve 654
+ ip address 172.28.165.188 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120                                             
+  advertise backup
+  ip-address 172.28.165.190
+  short-path-forwarding
+  enable
+!
+interface ve 655
+ ip address 172.28.165.251 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup
+  ip-address 172.28.165.254
+  short-path-forwarding
+  enable
+!
+interface ve 661
+ ip address 172.28.166.251 255.255.255.0
+ ip helper-address 1 10.180.194.60
+ ip helper-address 2 10.158.34.50
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1                                          
+  backup priority 120
+  advertise backup
+  ip-address 172.28.166.254
+  short-path-forwarding
+  enable
+!
+interface ve 662
+ ip address 172.28.167.60 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup
+  ip-address 172.28.167.62
+  short-path-forwarding
+  enable
+!
+interface ve 663
+ ip address 172.28.167.124 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg==              
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup
+  ip-address 172.28.167.126
+  short-path-forwarding
+  enable
+!
+interface ve 664
+ ip address 172.28.167.188 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup
+  ip-address 172.28.167.190
+  short-path-forwarding
+  enable
+!
+interface ve 665
+ ip address 172.28.167.251 255.255.255.192
+ ip ospf area 4
+ ip ospf passive                                                  
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup priority 120
+  advertise backup
+  ip-address 172.28.167.254
+  short-path-forwarding
+  enable
+
+===================================================================================
+
+Distro 2
+--------
+
+lag Bldg4_Flr1 dynamic id 1			/// no changes to the LAGs
+ ports ethernet 1/1/9 to 1/1/10 
+ primary-port 1/1/9
+ deploy
+ sflow forwarding ethernet 1/1/9
+ port-name Bldg4_Flr1 ethernet 1/1/9
+ sflow forwarding ethernet 1/1/10
+!
+lag Bldg4_Flr4 dynamic id 4
+ ports ethernet 1/1/15 to 1/1/16 
+ primary-port 1/1/15
+ deploy
+ sflow forwarding ethernet 1/1/15
+ port-name Bldg4_Flr4 ethernet 1/1/15
+ sflow forwarding ethernet 1/1/16
+!
+!
+vlan 651 name Cisco-Users by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 651
+!
+vlan 652 name Cisco-Aps by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 652                                          
+!
+vlan 653 name Cisco-Mgmt by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 653
+!
+vlan 654 name Cisco-Spare1 by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 654
+!
+vlan 655 name Cisco-Spare2 by port
+ tagged ethe 1/1/15 to 1/1/16 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 655
+!
+vlan 661 name Aruba_Users by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 661
+!
+vlan 662 name Aruba_APs by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 662
+!
+vlan 663 name Aruba_Mgmt by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2               
+ router-interface ve 663
+!
+vlan 664 name Aruba_Spare1 by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 664
+!
+vlan 665 name Aruba_Spare2 by port
+ tagged ethe 1/1/9 to 1/1/10 ethe 1/2/1 ethe 1/2/2 
+ router-interface ve 665
+
+
+interface ve 651
+ ip address 172.28.164.252 255.255.255.0
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.164.254
+  short-path-forwarding
+  enable
+!
+interface ve 652
+ ip address 172.28.165.61 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.165.62
+  short-path-forwarding
+  enable
+!
+interface ve 653
+ ip address 172.28.165.125 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.165.126
+  short-path-forwarding
+  enable
+!
+interface ve 654
+ ip address 172.28.165.189 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.165.190
+  short-path-forwarding
+  enable
+!
+interface ve 655
+ ip address 172.28.165.252 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.165.254
+  short-path-forwarding
+  enable
+!
+interface ve 661
+ ip address 172.28.166.252 255.255.255.0
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.166.254
+  short-path-forwarding
+  enable
+!
+interface ve 662
+ ip address 172.28.167.61 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.167.62
+  short-path-forwarding
+  enable
+!
+interface ve 663
+ ip address 172.28.167.125 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.167.126
+  short-path-forwarding
+  enable
+!
+interface ve 664
+ ip address 172.28.167.189 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.167.190
+  short-path-forwarding
+  enable
+!
+interface ve 665
+ ip address 172.28.167.252 255.255.255.192
+ ip ospf area 4
+ ip ospf passive
+ ip vrrp-extended auth-type md5-auth 2 $MlVzZCFAbg== 
+ ip vrrp-extended vrid 1
+  backup
+  advertise backup
+  ip-address 172.28.167.254
+  short-path-forwarding
+  enable
+
+===================================================================================
+
+Access 1st Floor
+----------------
+
+lag UPLINK dynamic id 1					/// no changes to the LAG                                 
+ ports eth 1/2/1 eth 2/2/1 eth 5/2/1 eth 6/2/1 
+ primary-port 1/2/1                                               
+ deploy                                                           
+ sflow forwarding ethernet 1/2/1                                  
+ port-name TO_sdgldst-b040101i-0101 ethernet 1/2/1                
+ sflow forwarding ethernet 2/2/1                                  
+ port-name TO_sdgldst-b040101i-0101 ethernet 2/2/1                
+ sflow forwarding ethernet 5/2/1                                  
+ port-name TO_sdgldst-b040101i-0102 ethernet 5/2/1                
+ sflow forwarding ethernet 6/2/1                                  
+ port-name TO_sdgldst-b040101i-0102 ethernet 6/2/1         
+!
+!
+vlan 661 name Aruba-Users by port                                 
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                          
+!                                                                 
+vlan 662 name Aruba-APs by port                                   
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                          
+!                                                                 
+vlan 663 name Aruba-Mgmt1 by port                                 
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                          
+!                                                                 
+vlan 664 name Aruba-Mgmt2 by port                                 
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                          
+!                                                                 
+vlan 665 name Aruba-Mgmt3 by port                                 
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable       
+
+===================================================================================
+
+Access 4th Floor
+----------------    
+
+lag UPLINK dynamic id 1					/// no changes to the LAG
+ ports eth 1/2/1 eth 2/2/1 eth 5/2/1 eth 6/2/1 
+ primary-port 1/2/1
+ deploy
+ sflow forwarding ethernet 1/2/1
+ port-name TO_sdgldst-b040101i-0101 ethernet 1/2/1
+ sflow forwarding ethernet 2/2/1
+ port-name TO_sdgldst-b040101i-0101 ethernet 2/2/1
+ sflow forwarding ethernet 5/2/1
+ port-name TO_sdgldst-b040101i-0102 ethernet 5/2/1
+ sflow forwarding ethernet 6/2/1
+ port-name TO_sdgldst-b040101i-0102 ethernet 6/2/1
+!
+!
+vlan 651 name Cisco-Users by port
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1 
+ spanning-tree 802-1w
+ spanning-tree 802-1w priority 1
+ spanning-tree 802-1w ethe 1/2/1 disable
+ spanning-tree 802-1w ethe 2/2/1 disable
+ spanning-tree 802-1w ethe 5/2/1 disable
+ spanning-tree 802-1w ethe 6/2/1 disable
+!
+vlan 652 name Cisco-APs by port
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1 
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                          
+!                                                                 
+vlan 653 name Cisco-Mgmt by port                                  
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                          
+!                                                                 
+vlan 654 name Cisco-Spare1 by port                                
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                          
+!                                                                 
+vlan 655 name Cisco-Spare2 by port                                
+ tagged ethe 1/2/1 ethe 2/2/1 ethe 5/2/1 ethe 6/2/1               
+ spanning-tree 802-1w                                             
+ spanning-tree 802-1w priority 1                                  
+ spanning-tree 802-1w ethe 1/2/1 disable                          
+ spanning-tree 802-1w ethe 2/2/1 disable                          
+ spanning-tree 802-1w ethe 5/2/1 disable                          
+ spanning-tree 802-1w ethe 6/2/1 disable                                                

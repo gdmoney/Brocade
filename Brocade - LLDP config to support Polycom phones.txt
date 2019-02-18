@@ -1,0 +1,43 @@
+Implementation Plan
+===================
+sdglacc-b040101i-0101
+---------------------
+lldp tagged-packets process
+lldp med network-policy application voice tagged vlan 541 priority 6 dscp 46 ports eth 5/1/16 eth 9/1/17 eth 10/1/14 eth 1/1/25 eth 5/1/15 eth 1/1/36 eth 3/1/38 eth 1/1/19 eth 7/1/16 eth 5/1/12 eth 7/1/30
+lldp advertise vlan-name vlan 541 ports eth 1/1/15 eth 5/1/16 eth 9/1/17 eth 10/1/14 eth 1/1/25 eth 5/1/15 eth 1/1/36 eth 3/1/38 eth 1/1/19 eth 7/1/16 eth 5/1/12 eth 7/1/30
+lldp run
+
+
+
+
+Rollback Plan
+=============
+sdglacc-b040101i-0101
+---------------------
+no lldp tagged-packets process
+no lldp med network-policy application voice tagged vlan 541 priority 6 dscp 46 ports eth 5/1/16 eth 9/1/17 eth 10/1/14 eth 1/1/25 eth 5/1/15 eth 1/1/36 eth 3/1/38 eth 1/1/19 eth 7/1/16 eth 5/1/12 eth 7/1/30
+no lldp advertise vlan-name vlan 541 ports eth 5/1/16 eth 9/1/17 eth 10/1/14 eth 1/1/25 eth 5/1/15 eth 1/1/36 eth 3/1/38 eth 1/1/19 eth 7/1/16 eth 5/1/12 eth 7/1/30
+no lldp run
+
+
+
+
+Test Plan
+=========
+// before the change the phone is in the Data VLAN
+
+SSH@sdgldst-b040101i-0101#show arp | in 0004.f2df.ca9f
+665   172.18.48.53     0004.f2df.ca9f Dynamic  0    1/1/9-1/1/10      Valid 
+
+
+// after the change the phone moves to the Voice VLAN
+
+SSH@sdgldst-b040101i-0101#show arp | in 0004.f2df.ca9f
+207   172.18.12.17     0004.f2df.ca9f Dynamic  1    1/1/9-1/1/10      Valid 
+665   172.18.48.53     0004.f2df.ca9f Dynamic  2    1/1/9-1/1/10      Valid 
+
+
+// after 10 minutes the old IP address is cleared from the ARP table
+
+SSH@sdgldst-b040101i-0101#show arp | in 0004.f2df.ca9f            
+208   172.18.12.17     0004.f2df.ca9f Dynamic  1    1/1/9-1/1/10      Valid 

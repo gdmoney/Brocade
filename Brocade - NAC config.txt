@@ -1,0 +1,23 @@
+authentication
+ auth-default-vlan 2001
+ re-authentication
+ reauth-period 28800
+ pass-through lldp
+ pass-through cdp
+ pass-through fdp
+ dot1x enable
+ dot1x enable ethe 1/1/31 ethe 1/1/35 to 1/1/36 ethe 3/1/14 ethe 3/1/29 ethe 3/1/31 ethe 3/1/35 to 3/1/36 ethe 5/1/36 ethe 6/1/17 ethe 7/1/33 ethe 8/1/9 ethe 8/1/47 ethe 10/1/22 ethe 10/1/28 to 10/1/29 ethe 10/1/31 
+ mac-authentication enable
+ mac-authentication enable ethe 1/1/31 ethe 1/1/35 to 1/1/36 ethe 3/1/14 ethe 3/1/29 ethe 3/1/31 ethe 3/1/35 to 3/1/36 ethe 5/1/36 ethe 6/1/17 ethe 7/1/33 ethe 8/1/9 ethe 8/1/47 ethe 10/1/22 ethe 10/1/28 to 10/1/29 ethe 10/1/31 
+ mac-authentication dot1x-override
+
+vlan 2001 name NAC_auth-default-vlan by port
+
+
+interface ethernet 1/1/31
+ authentication auth-default-vlan 744
+ dot1x port-control auto
+
+
+show dot1x sessions all
+show mac-authentication sessions all
