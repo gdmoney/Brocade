@@ -1,6 +1,5 @@
 sdglacc-b030101m-0101
 ---------------------
-
 int e 1/1/4 to 1/1/5
  enable
  no loop-detection
@@ -39,13 +38,8 @@ lag WLCFlex-Secondary static id 115
  deploy             
 
 
-
 vlan 600 to 604
  tag e 1/1/4 to 1/1/5
 
 vlan 672
  tag e 1/1/4 to 1/1/5           
-
-
-
-        
