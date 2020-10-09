@@ -36,7 +36,3 @@ Replacing a stack unit:
 - enter: stack secure-setup to renumber the new unit (optional)
 - configure the new unit's interfaces
 
-
-
-
-
