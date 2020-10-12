@@ -19,7 +19,7 @@ stack unit 2
  priority 128
 
 ============================
-General
+General:
 
 stack enable				                   // individually on each switch
 stack secure-setup
