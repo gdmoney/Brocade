@@ -23,6 +23,9 @@ stack unit 1
  
 stack interactive-setup           // renumber new switch from 5 to 1
 
+stack unit 1
+ priority 128
+
 ============================
 General:
 
