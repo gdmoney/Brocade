@@ -14,6 +14,7 @@ reload
 no stack unit 1
 
 stack unit 1
+ priority 128
  module 1 icx7450-48p-poe-management-module
  module 2 icx7400-xgf-4port-40g-module
  module 3 icx7400-qsfp-1port-40g-module
@@ -23,8 +24,7 @@ stack unit 1
  
 stack interactive-setup           // renumber new switch from #n to #1
 
-stack unit 1
- priority 128
+// configure interfaces
 
 vlan 250
  untagged eth 1/1/1 to 1/1/48
