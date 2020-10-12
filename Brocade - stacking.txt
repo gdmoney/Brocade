@@ -3,7 +3,8 @@ Security camera switch setup:
 stack enable				                  // individually on each switch
 
 stack unit 1 				                 // individually on each switch
- default-ports 1/2/1 1/2/3		      // individually on each switch (when using 10G ports on the front instead of the 40G ports on the back)
+ stack-port 1/2/1                 // individually on each switch (when using 10G ports on the front instead of the 40G ports on the back)
+ stack-port 1/2/3
 
 wr mem
 reload
