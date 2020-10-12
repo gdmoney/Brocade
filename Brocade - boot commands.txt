@@ -12,9 +12,3 @@ copy tftp flash 172.18.48.66 sps08030d.bin primary
 copy flash flash secondary
 
 boot system flash primary/secondary
-
-
-
-
-
-
