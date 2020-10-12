@@ -21,11 +21,21 @@ stack unit 1
  stack-port 1/2/1                 
  stack-port 1/2/3
  
-stack interactive-setup           // renumber new switch from 5 to 1
+stack interactive-setup           // renumber new switch from #5 to #1
 
 stack unit 1
  priority 128
 
+vlan 250
+ untagged eth 1/1/1 to 1/1/48
+ 
+int eth 1/1/1 to 1/1/48
+ loop-detection
+ broadcast limit 100000 kbps
+ multicast limit 100000 kbps
+ unknown-unicast limit 100000 kbps
+ stp-bpdu-guard
+ 
 ============================
 General:
 
