@@ -21,7 +21,7 @@ stack unit 1
  stack-port 1/2/1                 
  stack-port 1/2/3
  
-stack interactive-setup           // renumber new switch from #5 to #1
+stack interactive-setup           // renumber new switch from #n to #1
 
 stack unit 1
  priority 128
